@@ -5,6 +5,7 @@ package HackerRank;
  * Date: 08/02/2018
  * HackerRankId: prasadc8897
  */
+
 import java.util.*;
 
 public class Ways_to_give_a_check {
@@ -42,20 +43,16 @@ public class Ways_to_give_a_check {
         }
         int count = 0;
         for (int i : P) {
-            boolean c1 = shift('N', king, i, c);
-            boolean c2 = shift('B', king, i, c);
-            boolean c3 = shift('R', king, i, c);
-            boolean c4 = shift('Q', king, i, c);
-            if (c1) {
+            if (shift('N', king, i, c)) {
                 count++;
             }
-            if (c2) {
+            if (shift('B', king, i, c)) {
                 count++;
             }
-            if (c3) {
+            if (shift('R', king, i, c)) {
                 count++;
             }
-            if (c4) {
+            if (shift('Q', king, i, c)) {
                 count++;
             }
         }
