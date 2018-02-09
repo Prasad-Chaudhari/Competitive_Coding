@@ -1,11 +1,15 @@
-package CodeForces;
 
-
+/**
+ * Date : 8 Feb, 2018
+ * Link : http://codeforces.com/contest/922/problem/C
+ *
+ * @author Prasad-Chaudhari
+ * @email prasadc8897@gmail.com
+ */
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Cave_Painting_922_C {
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         long n = in.nextLong();
@@ -21,7 +25,7 @@ public class Cave_Painting_922_C {
             i++;
         }
         try {
-            long a = l.get((int)k);
+            long a = l.get((int) k);
             if ((n + 1) % a == 0) {
                 System.out.println("Yes");
             } else {

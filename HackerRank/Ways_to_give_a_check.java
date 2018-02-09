@@ -1,11 +1,11 @@
-package HackerRank;
 
 /**
- * Link: https://www.hackerrank.com/contests/w36/challenges/ways-to-give-a-check
- * Date: 08/02/2018
- * HackerRankId: prasadc8897
+ * Date : 8 Feb, 2018
+ * Link : https://www.hackerrank.com/contests/w36/challenges/ways-to-give-a-check
+ *
+ * @author Prasad-Chaudhari
+ * @email prasadc8897@gmail.com
  */
-
 import java.util.*;
 
 public class Ways_to_give_a_check {
@@ -26,6 +26,7 @@ public class Ways_to_give_a_check {
             }
         }
     }
+
     private static int waysToGiveACheck(char[][] c) {
         LinkedList<Integer> P = new LinkedList<>();
         for (int i = 0; i < 8; i++) {
@@ -106,13 +107,13 @@ public class Ways_to_give_a_check {
     }
 
     private static boolean shift(char white, int king, int pos, char[][] c) {
-        if(c[0][pos]!='#'){
+        if (c[0][pos] != '#') {
             return false;
         }
         c[0][pos] = white;
         c[1][pos] = '#';
         if (checkByKnight(c, king)) {
-            revert(c,pos);
+            revert(c, pos);
             return true;
         }
         boolean a1, a2, a3, a4, a5, a6, a7, a8;
@@ -125,7 +126,7 @@ public class Ways_to_give_a_check {
             }
             if (!a1 && validPlace(x - i, y)) {
                 if (c[x - i][y] == 'Q' || c[x - i][y] == 'R') {
-                    revert(c,pos);
+                    revert(c, pos);
                     return true;
                 }
                 if (c[x - i][y] != '#') {
@@ -136,7 +137,7 @@ public class Ways_to_give_a_check {
             }
             if (!a2 && validPlace(x, y - i)) {
                 if (c[x][y - i] == 'Q' || c[x][y - i] == 'R') {
-                    revert(c,pos);
+                    revert(c, pos);
                     return true;
                 }
                 if (c[x][y - i] != '#') {
@@ -147,7 +148,7 @@ public class Ways_to_give_a_check {
             }
             if (!a3 && validPlace(x + i, y)) {
                 if (c[x + i][y] == 'Q' || c[x + i][y] == 'R') {
-                    revert(c,pos);
+                    revert(c, pos);
                     return true;
                 }
                 if (c[x + i][y] != '#') {
@@ -158,7 +159,7 @@ public class Ways_to_give_a_check {
             }
             if (!a4 && validPlace(x, y + i)) {
                 if (c[x][y + i] == 'Q' || c[x][y + i] == 'R') {
-                    revert(c,pos);
+                    revert(c, pos);
                     return true;
                 }
                 if (c[x][y + i] != '#') {
@@ -169,7 +170,7 @@ public class Ways_to_give_a_check {
             }
             if (!a5 && validPlace(x - i, y - i)) {
                 if (c[x - i][y - i] == 'B' || c[x - i][y - i] == 'Q') {
-                    revert(c,pos);
+                    revert(c, pos);
                     return true;
                 }
                 if (c[x - i][y - i] != '#') {
@@ -180,7 +181,7 @@ public class Ways_to_give_a_check {
             }
             if (!a6 && validPlace(x - i, y + i)) {
                 if (c[x - i][y + i] == 'B' || c[x - i][y + i] == 'Q') {
-                    revert(c,pos);
+                    revert(c, pos);
                     return true;
                 }
                 if (c[x - i][y + i] != '#') {
@@ -191,7 +192,7 @@ public class Ways_to_give_a_check {
             }
             if (!a7 && validPlace(x + i, y - i)) {
                 if (c[x + i][y - i] == 'B' || c[x + i][y - i] == 'Q') {
-                    revert(c,pos);
+                    revert(c, pos);
                     return true;
                 }
                 if (c[x + i][y - i] != '#') {
@@ -202,7 +203,7 @@ public class Ways_to_give_a_check {
             }
             if (!a8 && validPlace(x + i, y + i)) {
                 if (c[x + i][y + i] == 'B' || c[x + i][y + i] == 'Q') {
-                    revert(c,pos);
+                    revert(c, pos);
                     return true;
                 }
                 if (c[x + i][y + i] != '#') {
@@ -212,12 +213,13 @@ public class Ways_to_give_a_check {
                 a8 = true;
             }
         }
-        revert(c,pos);
+        revert(c, pos);
         return false;
     }
-    private static void revert(char[][] c,int pos){
+
+    private static void revert(char[][] c, int pos) {
         c[0][pos] = '#';
-        c[1][pos] ='P';
+        c[1][pos] = 'P';
     }
 
     private static boolean validPlace(int i, int j) {

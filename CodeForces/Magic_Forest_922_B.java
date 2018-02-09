@@ -1,33 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-//package CodeForces;
-
-import java.util.Scanner;
 
 /**
+ * Date : 8 Feb, 2018
+ * Link : http://codeforces.com/contest/922/problem/B
  *
- * @author PRASAD
+ * @author Prasad-Chaudhari
+ * @email prasadc8897@gmail.com
  */
-public class Magic_Forest_922_B {
+import java.util.Scanner;
 
-    /**
-     * @param args the command line arguments
-     */
+public class Magic_Forest_922_B {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int count = 0;
-        for(int i=1;i<=n;i++){
-            for(int j=i;j<=n;j++){
-                int c = i^j;
-                if(c<=i||c<=j||c>n){
+        for (int i = 1; i <= n; i++) {
+            for (int j = i; j <= n; j++) {
+                int c = i ^ j;
+                if (c <= i || c <= j || c > n) {
                     continue;
                 }
-                if(i+j>c){
+                if (i + j > c) {
                     count++;
                 }
             }
