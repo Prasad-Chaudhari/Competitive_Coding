@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Cave_Painting_922_C {
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         long n = in.nextLong();

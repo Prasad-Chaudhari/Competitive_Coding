@@ -9,6 +9,7 @@
 import java.util.Scanner;
 
 public class Cloning_Toys_922_A {
+
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner in = new Scanner(System.in);

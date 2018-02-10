@@ -9,6 +9,7 @@
 import java.util.Scanner;
 
 public class Magic_Forest_922_B {
+
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner in = new Scanner(System.in);
