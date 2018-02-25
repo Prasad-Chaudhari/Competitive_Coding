@@ -1,58 +1,62 @@
 
 /**
- * Date: 14 Feb, 2018
+ * Date: 24 Feb, 2018
  * Link : http://codeforces.com/problemset/problem/5/B
- *
+ * 
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
  */
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.LinkedList;
+import java.io.*;
+import java.util.*;
 
 public class Center_Alignment_5_B {
 
     public static void main(String[] args) throws IOException {
-        // TODO code application logic here
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        LinkedList<String> l = new LinkedList<>();
-        int max = 0;
-        while (br.ready()) {
-            String s = br.readLine();
-            l.add(s);
-            if (max < s.length()) {
-                max = s.length();
-            }
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(System.in));
+        
+        ArrayList<String> lstStr = new ArrayList<>();
+        String str = null;
+        while ((str = reader.readLine()) != null) {
+            lstStr.add(str);
         }
-        System.out.print("*");
-        for (int i = 0; i < max; i++) {
-            System.out.print("*");
+        
+        int mxLen = 0;
+        for (String s : lstStr) {
+            mxLen = Math.max(mxLen, s.length());
         }
-        System.out.print("*");
-        System.out.println();
-        for (String s : l) {
-            int li = (max - s.length()) / 2;
-            if ((max - s.length()) % 2 == 1) {
-                li++;
+        
+        int cnt = 0;
+        for (int i = 0; i < lstStr.size(); i++) {
+            String s = lstStr.get(i);
+            int spaceLeft = (mxLen - s.length()) / 2;
+            int spaceRight = mxLen - s.length() - spaceLeft;
+            
+            if (spaceLeft != spaceRight) {
+                cnt++;
+                if (cnt % 2 == 0) {
+                    int tmp = spaceLeft;
+                    spaceLeft = spaceRight;
+                    spaceRight = tmp;
+                }
             }
-            System.out.print("*");
-            for (int i = 0; i < li; i++) {
-                System.out.print(" ");
-            }
-            System.out.print(s);
-            for (int i = 0; i < max - s.length() - li; i++) {
-                System.out.print(" ");
-            }
-            System.out.print("*");
-            System.out.println();
+            for (int j = 0; j < spaceLeft; j++)
+                s = " ".concat(s);
+            for (int j = 0; j < spaceRight; j++)
+                s = s.concat(" ");
+            s = "*".concat(s);
+            s = s.concat("*");
+            lstStr.set(i, s);
         }
-        System.out.print("*");
-        for (int i = 0; i < max; i++) {
-            System.out.print("*");
+        
+        String newStr = "";
+        for (int i = 0; i < mxLen+2; i++)
+            newStr = newStr.concat("*");
+        
+        System.out.println(newStr);
+        for (String s : lstStr) {
+            System.out.println(s);
         }
-        System.out.print("*");
-        System.out.println();
-
+        System.out.println(newStr);
     }
 }
