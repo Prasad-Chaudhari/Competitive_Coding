@@ -72,11 +72,10 @@ public class Fafa_and_Ancient_Alphabet_935_D {
                 noofz--;
                 continue;
             }
-            
+
             if (s2[i] > s1[i]) {
                 break;
-            } 
-            else if (s2[i] < s1[i]) {
+            } else if (s2[i] < s1[i]) {
                 long p = equal * powers[noofz];
                 p %= mod;
                 ans += p;

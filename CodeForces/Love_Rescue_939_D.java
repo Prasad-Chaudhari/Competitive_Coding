@@ -2,7 +2,7 @@
 /**
  * Date: 17 Feb, 2018
  * Link: http://codeforces.com/contest/939/problem/D
- * 
+ *
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
  */
@@ -18,12 +18,12 @@ public class Love_Rescue_939_D {
         int n = in.nextInt();
         char c1[] = in.next().toCharArray();
         char c2[] = in.next().toCharArray();
-        UnionFind uf = new UnionFind(26-1);
-        int count=0;
+        UnionFind uf = new UnionFind(26 - 1);
+        int count = 0;
         StringBuilder sb = new StringBuilder();
-        for(int i=0;i<n;i++){
-            if(uf.find(c1[i]-'a')!=uf.find(c2[i]-'a')){
-                uf.union(uf.find(c1[i]-'a'), uf.find(c2[i]-'a'));
+        for (int i = 0; i < n; i++) {
+            if (uf.find(c1[i] - 'a') != uf.find(c2[i] - 'a')) {
+                uf.union(uf.find(c1[i] - 'a'), uf.find(c2[i] - 'a'));
                 sb.append(c1[i]).append(" ").append(c2[i]).append('\n');
                 count++;
             }
@@ -32,9 +32,10 @@ public class Love_Rescue_939_D {
         System.out.println(sb.toString());
     }
 }
+
 class UnionFind {
 
-    private int noOfComponents,n;
+    private int noOfComponents, n;
     private final int[] component;
     private final int[] size;
     ArrayList<LinkedList<Integer>> members;
@@ -73,8 +74,8 @@ class UnionFind {
         size[b] = size[b] + size[a];
         noOfComponents--;
     }
-    
-    public int noOfComponents(){
+
+    public int noOfComponents() {
         return noOfComponents;
     }
 }

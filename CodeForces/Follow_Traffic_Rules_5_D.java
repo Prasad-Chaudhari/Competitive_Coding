@@ -20,7 +20,7 @@ public class Follow_Traffic_Rules_5_D {
         double w = in.nextInt();
         double time = 0;
         if (v <= w) {
-            if ((v * v) > 2*l*a) {
+            if ((v * v) > 2 * l * a) {
                 time = Math.sqrt(2 * l / a);
             } else {
                 time = v / a;
@@ -28,61 +28,55 @@ public class Follow_Traffic_Rules_5_D {
                 time += (l - s) / v;
             }
         } else {
-            if (2 * a * d <= w*w) {
-                if(v*v>=2*a*l){
-                    time = Math.sqrt(2*l/a);
+            if (2 * a * d <= w * w) {
+                if (v * v >= 2 * a * l) {
+                    time = Math.sqrt(2 * l / a);
+                } else {
+                    time = v / a;
+                    double s = (v * v) / (2 * a);
+                    time += (l - s) / v;
                 }
-                else{
-                    time = v/a;
-                    double s = (v*v)/(2*a);
-                    time += (l-s)/v;
-                }
-            }
-            else{
-                if(v*v-w*w>2*a*(l-d)){
+            } else {
+                if (v * v - w * w > 2 * a * (l - d)) {
                     double min = w;
                     double max = v;
-                    double mid = (max+min)/2;
+                    double mid = (max + min) / 2;
                     double s = 0;
-                    while(Math.abs(s-(l-d))>.00000001){
-                        s = (mid*mid-w*w)/(2*a);
-                        if(s>(l-d)){
+                    while (Math.abs(s - (l - d)) > .00000001) {
+                        s = (mid * mid - w * w) / (2 * a);
+                        if (s > (l - d)) {
                             max = mid;
-                        }
-                        else{
+                        } else {
                             min = mid;
                         }
-                        mid= (max+min)/2;
+                        mid = (max + min) / 2;
                     }
-                    time += (mid-w)/a;
+                    time += (mid - w) / a;
+                } else {
+                    time = (v - w) / a;
+                    double s = (v * v - w * w) / (2 * a);
+                    time += (l - d - s) / v;
                 }
-                else{
-                    time = (v-w)/a;
-                    double s = (v*v-w*w)/(2*a);
-                    time+= (l-d-s)/v;
-                }
-                if(a*d+(w*w)/2<=v*v){
-                    double max = v ;
+                if (a * d + (w * w) / 2 <= v * v) {
+                    double max = v;
                     double min = w;
-                    double mid = (v+w)/2;
-                    double s=0;
-                    while(Math.abs(s-d)>.000000001){
-                        s = (mid*mid/(2*a))+(mid*mid-w*w)/(2*a);
-                        if(s>d){
+                    double mid = (v + w) / 2;
+                    double s = 0;
+                    while (Math.abs(s - d) > .000000001) {
+                        s = (mid * mid / (2 * a)) + (mid * mid - w * w) / (2 * a);
+                        if (s > d) {
                             max = mid;
-                        }
-                        else{
+                        } else {
                             min = mid;
                         }
-                        mid = (max+min)/2;
+                        mid = (max + min) / 2;
                     }
-                    time+=(2*mid-w)/a;
-                }
-                else{
-                    time += v/a;
-                    time += (v-w)/a;
-                    double s = d - (v*v)/(2*a) - (v*v-w*w)/(2*a);
-                    time+= s/v;
+                    time += (2 * mid - w) / a;
+                } else {
+                    time += v / a;
+                    time += (v - w) / a;
+                    double s = d - (v * v) / (2 * a) - (v * v - w * w) / (2 * a);
+                    time += s / v;
                 }
             }
         }

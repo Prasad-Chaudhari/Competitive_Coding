@@ -17,13 +17,13 @@ public class Recursive_Queries_932_B {
         // TODO code application logic here
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int ans[] = new int[1000000+1];
+        int ans[] = new int[1000000 + 1];
         int root = 1000;
-        int freq[][] = new int[root+1][10];
+        int freq[][] = new int[root + 1][10];
         for (int i = 1; i <= 1000000; i++) {
             int gans = g(i);
             ans[i] = gans;
-            freq[i/root][gans]++;
+            freq[i / root][gans]++;
         }
         int q = Integer.parseInt(st.nextToken());
         while (q-- > 0) {
@@ -34,32 +34,31 @@ public class Recursive_Queries_932_B {
             System.out.println(getAns(l, r, k, freq, ans));
         }
     }
-    
-    static int getAns(int l,int r,int k,int [][] freq,int []gans ){
+
+    static int getAns(int l, int r, int k, int[][] freq, int[] gans) {
         int ans = 0;
         int root = 1000;
-        int mull = l/root;
-        int modl = l%root;
-        int mulr = r/root;
-        int modr = r%root;
-        if(mull==mulr){
-            for(int i=l;i<=r;i++){
-                if(gans[i]==k){
+        int mull = l / root;
+        int modl = l % root;
+        int mulr = r / root;
+        int modr = r % root;
+        if (mull == mulr) {
+            for (int i = l; i <= r; i++) {
+                if (gans[i] == k) {
                     ans++;
                 }
             }
-        }
-        else{
-            for(int i=l;i<(mull+1)*root;i++){
-                if(gans[i]==k){
+        } else {
+            for (int i = l; i < (mull + 1) * root; i++) {
+                if (gans[i] == k) {
                     ans++;
                 }
             }
-            for(int i=mull+1;i<mulr;i++){
-                ans+=freq[i][k];
+            for (int i = mull + 1; i < mulr; i++) {
+                ans += freq[i][k];
             }
-            for(int i=mulr*root;i<=r;i++){
-                if(gans[i]==k){
+            for (int i = mulr * root; i <= r; i++) {
+                if (gans[i] == k) {
                     ans++;
                 }
             }

@@ -2,7 +2,7 @@
 /**
  * Date: 15 Feb, 2018
  * Link : http://codeforces.com/contest/932/problem/A
- * 
+ *
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
  */
@@ -15,6 +15,6 @@ public class Palindromic_Supersequence_932_A {
         Scanner in = new Scanner(System.in);
         String s = in.next();
         StringBuilder sb = new StringBuilder(s);
-        System.out.println(s+""+sb.reverse());
+        System.out.println(s + "" + sb.reverse());
     }
 }

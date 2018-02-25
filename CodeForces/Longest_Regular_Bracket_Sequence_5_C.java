@@ -36,24 +36,22 @@ public class Longest_Regular_Bracket_Sequence_5_C {
             if (ch[i]) {
                 l++;
             } else {
-                if(l>=max){
-                    if(max==l){
+                if (l >= max) {
+                    if (max == l) {
                         curr++;
-                    }
-                    else{
-                        curr=1;
+                    } else {
+                        curr = 1;
                     }
                     max = l;
                 }
                 l = 0;
             }
         }
-        if(l>=max){
-            if(max==l){
+        if (l >= max) {
+            if (max == l) {
                 curr++;
-            }
-            else{
-                curr=1;
+            } else {
+                curr = 1;
             }
             max = l;
         }
