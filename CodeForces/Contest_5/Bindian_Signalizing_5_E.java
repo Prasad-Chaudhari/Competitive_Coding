@@ -2,15 +2,13 @@
 /**
  * Date: 26 Feb, 2018
  * Link : http://codeforces.com/problemset/problem/5/E
- * Comment : TLE
- * 
+ *
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
  */
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Bindian_Signalizing_5_E {
 
@@ -33,13 +31,13 @@ public class Bindian_Signalizing_5_E {
         for (int i = 0; i < n; i++) {
             a[i] = b[(index + i) % n];
         }
-        b=a;
+        b = a;
         int r[] = new int[n + 1];
         int l[] = new int[n + 1];
         int c[] = new int[n + 1];
         for (int i = n - 1; i >= 0; i--) {
             r[i] = i + 1;
-            while (r[i] < n && b[i] >=b[r[i]]) {
+            while (r[i] < n && b[i] >= b[r[i]]) {
                 r[i] = r[r[i]];
             }
         }
@@ -69,11 +67,13 @@ public class Bindian_Signalizing_5_E {
     static class FastIO2 {
 
         private final BufferedReader br;
-        private StringTokenizer st;
+        private String s[];
+        private int index;
 
         public FastIO2() throws IOException {
             br = new BufferedReader(new InputStreamReader(System.in));
-            st = new StringTokenizer(br.readLine());
+            s = br.readLine().split(" ");
+            index = 0;
         }
 
         public int ni() throws IOException {
@@ -92,8 +92,8 @@ public class Bindian_Signalizing_5_E {
             return nextToken();
         }
 
-        public String nli() {
-            return st.nextToken("");
+        public String nli() throws IOException {
+            return br.readLine();
         }
 
         public int[] gia(int n) throws IOException {
@@ -147,12 +147,12 @@ public class Bindian_Signalizing_5_E {
             return a;
         }
 
-        private String nextToken() throws IOException {
-            while (st.countTokens() != 0) {
-                return st.nextToken();
+        private String nextToken() throws IndexOutOfBoundsException, IOException {
+            if (index == s.length) {
+                s = br.readLine().split(" ");
+                index = 0;
             }
-            st = new StringTokenizer(br.readLine());
-            return nextToken();
+            return s[index++];
         }
 
         private void validate(int n, int start, int end) {
