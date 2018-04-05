@@ -1,5 +1,3 @@
-package CodeForces;
-
 
 /**
  * Date: 26 Feb, 2018

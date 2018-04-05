@@ -1,7 +1,7 @@
 
 /**
- * Date: 26 Feb, 2018
- * Link : http://codeforces.com/problemset/problem/6/B
+ * Date: 5 Apr, 2018
+ * Link: http://codeforces.com/contest/959/problem/C
  *
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
@@ -9,83 +9,42 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.StringTokenizer;
 
-public class Presidents_Office_6_B {
+public class Mahmoud_and_Ehab_and_the_wrong_algorithm_959_C {
 
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         FastIO2 in = new FastIO2();
+        StringBuilder sb1 = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
         int n = in.ni();
-        int m = in.ni();
-        char P = in.next().charAt(0);
-        char[][] c = new char[n][m];
-        for (int i = 0; i < n; i++) {
-            c[i] = in.next().toCharArray();
+        for (int i = 1; i < n; i++) {
+            sb2.append(i).append(" ").append(i + 1).append("\n");
         }
-        Set<Character> s = new HashSet<>();
-        int pi1 = 0;
-        int pj1 = 0;
-        int pi2 = 0;
-        int pj2 = 0;
-        boolean p = true;
-        Outer:
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (c[i][j] == P) {
-                    if (p) {
-                        pi1 = i;
-                        pj1 = j;
-                        p = false;
-                    }
-                    pi2 = i;
-                    pj2 = j;
-                }
+        if (n <= 5) {
+            sb1.append(-1 + "\n");
+        } else {
+            sb1.append("1 2\n");
+            for (int i = 0; i < (n - 2) / 2; i++) {
+                sb1.append("1 " + (i + 3) + "\n");
+            }
+            for (int i = (n - 2) / 2; i < (n - 2); i++) {
+                sb1.append("2 " + (i + 3) + "\n");
             }
         }
-        for (int i = pi1; i <= pi2; i++) {
-            int j = pj1 - 1;
-            if (i >= 0 && i < n && j >= 0 && j < m) {
-                s.add(c[i][j]);
-            }
-        }
-        for (int i = pi1; i <= pi2; i++) {
-            int j = pj2 + 1;
-            if (i >= 0 && i < n && j >= 0 && j < m) {
-                s.add(c[i][j]);
-            }
-        }
-        for (int i = pj1; i <= pj2; i++) {
-            int j = pi1 - 1;
-            if (i >= 0 && i < m && j >= 0 && j < n) {
-                s.add(c[j][i]);
-            }
-        }
-        for (int i = pj1; i <= pj2; i++) {
-            int j = pi2 + 1;
-            if (i >= 0 && i < m && j >= 0 && j < n) {
-                s.add(c[j][i]);
-            }
-        }
-        int count = 0;
-        for (char d : s) {
-            if (d != '.') {
-                count++;
-            }
-        }
-        System.out.println(count);
+        System.out.println(sb1.toString() + sb2.toString());
     }
 
     static class FastIO2 {
 
         private final BufferedReader br;
-        private StringTokenizer st;
+        private String s[];
+        private int index;
 
         public FastIO2() throws IOException {
             br = new BufferedReader(new InputStreamReader(System.in));
-            st = new StringTokenizer(br.readLine());
+            s = br.readLine().split(" ");
+            index = 0;
         }
 
         public int ni() throws IOException {
@@ -104,8 +63,13 @@ public class Presidents_Office_6_B {
             return nextToken();
         }
 
-        public String nli() {
-            return st.nextToken("");
+        public String nli() throws IOException {
+            try {
+                return br.readLine();
+            } catch (IOException ex) {
+
+            }
+            return null;
         }
 
         public int[] gia(int n) throws IOException {
@@ -159,12 +123,12 @@ public class Presidents_Office_6_B {
             return a;
         }
 
-        private String nextToken() throws IOException {
-            while (st.countTokens() != 0) {
-                return st.nextToken();
+        private String nextToken() throws IndexOutOfBoundsException, IOException {
+            if (index == s.length) {
+                s = br.readLine().split(" ");
+                index = 0;
             }
-            st = new StringTokenizer(br.readLine());
-            return nextToken();
+            return s[index++];
         }
 
         private void validate(int n, int start, int end) {
