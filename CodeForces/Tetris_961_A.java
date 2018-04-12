@@ -1,51 +1,45 @@
 
 /**
- * Date: 11 Apr, 2018
- * Link: https://www.codechef.com/APRIL18B/problems/AVGPR
- *
+ * Date: 12 Apr, 2018
+ * Link: http://codeforces.com/contest/961/problem/A
+ * 
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
  */
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
 
-public class AVGPR {
+public class Tetris_961_A {
 
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         FastIO2 in = new FastIO2();
-        int t = in.ni();
-        while (t-- > 0) {
-            int n = in.ni();
-            long a[] = new long[2001];
-            Set<Integer> s = new HashSet<Integer>();
-            for (int i = 0; i < n; i++) {
-                int p = in.ni() + 1000;
-                a[p]++;
-                s.add(2 * p);
-            }
-            long count = 0;
-            for (int i = 0; i <= 2000; i++) {
-                for (int j = i + 1; j <= 2000; j++) {
-                    if (a[i] != 0 && a[j] != 0) {
-                        if (s.contains(i + j)) {
-                            count += a[i] * a[j];
-                        }
-                    }
-                }
-            }
-            for (int i = 0; i <= 2000; i++) {
-                if (a[i] != 0) {
-                    if (s.contains(2 * i)) {
-                        count += a[i] * (a[i] - 1) / 2;
-                    }
-                }
-            }
-            System.out.println(count);
+        int n = in.ni();
+        int m = in.ni();
+        int a[] = new int[n];
+        int count =0;
+        for(int i=0;i<m;i++){
+            a[in.ni()-1]++;
+            count += checka(a);
         }
+        System.out.println(count);
+    }
+    
+    public static int checka(int a[]){
+        int count = 100000;
+        for(int i=0;i<a.length;i++){
+            if(a[i]==0){
+                return 0;
+            }
+            if(a[i]<count){
+                count = a[i];
+            }
+        }
+        for(int i=0;i<a.length;i++){
+            a[i]-=count;
+        }
+        return count;
     }
 
     static class FastIO2 {
@@ -80,7 +74,7 @@ public class AVGPR {
             try {
                 return br.readLine();
             } catch (IOException ex) {
-
+                
             }
             return null;
         }

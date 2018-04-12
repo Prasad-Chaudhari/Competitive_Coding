@@ -1,7 +1,7 @@
 
 /**
- * Date: 11 Apr, 2018
- * Link: https://www.codechef.com/APRIL18B/problems/AVGPR
+ * Date: 12 Apr, 2018
+ * Link: https://www.codechef.com/APRIL18B/problems/HIGHWAYC
  *
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
@@ -9,10 +9,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
 
-public class AVGPR {
+public class HIGHWAYC {
 
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
@@ -20,31 +18,41 @@ public class AVGPR {
         int t = in.ni();
         while (t-- > 0) {
             int n = in.ni();
-            long a[] = new long[2001];
-            Set<Integer> s = new HashSet<Integer>();
+            double s = in.ni();
+            double y = in.ni();
+            double t0 = y / (s);
+            double v[] = in.gda(n);
+            double d[] = in.gda(n);
+            double p[] = in.gda(n);
+            double c[] = in.gda(n);
+            double time = 0;
             for (int i = 0; i < n; i++) {
-                int p = in.ni() + 1000;
-                a[p]++;
-                s.add(2 * p);
-            }
-            long count = 0;
-            for (int i = 0; i <= 2000; i++) {
-                for (int j = i + 1; j <= 2000; j++) {
-                    if (a[i] != 0 && a[j] != 0) {
-                        if (s.contains(i + j)) {
-                            count += a[i] * a[j];
+                if (d[i] == 1) {
+                    p[i] += time * v[i];
+                    if (p[i] > 0) {
+                        if (p[i] - c[i] < .000001) {
+                            time += (c[i] - p[i] + .000001) / (v[i]);
+                        }
+                    } else {
+                        if (p[i] + t0 * v[i] > -.000001) {
+                            time += (c[i] - p[i] + .000001) / v[i];
+                        }
+                    }
+                } else {
+                    p[i] -= time * v[i];
+                    if (p[i] > 0) {
+                        if (p[i] - t0 * v[i] < .000001) {
+                            time += (c[i] + p[i] + .000001) / v[i];
+                        }
+                    } else {
+                        if (c[i] + p[i] > -.000001) {
+                            time += (c[i] + p[i] + .000001) / (v[i]);
                         }
                     }
                 }
+                time += t0;
             }
-            for (int i = 0; i <= 2000; i++) {
-                if (a[i] != 0) {
-                    if (s.contains(2 * i)) {
-                        count += a[i] * (a[i] - 1) / 2;
-                    }
-                }
-            }
-            System.out.println(count);
+            System.out.println(time);
         }
     }
 

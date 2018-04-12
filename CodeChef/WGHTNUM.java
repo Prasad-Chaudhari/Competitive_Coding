@@ -1,7 +1,7 @@
 
 /**
  * Date: 11 Apr, 2018
- * Link: https://www.codechef.com/APRIL18B/problems/AVGPR
+ * Link: https://www.codechef.com/APRIL18B/problems/WGHTNUM
  *
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
@@ -9,42 +9,40 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
 
-public class AVGPR {
+public class WGHTNUM {
 
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         FastIO2 in = new FastIO2();
         int t = in.ni();
         while (t-- > 0) {
-            int n = in.ni();
-            long a[] = new long[2001];
-            Set<Integer> s = new HashSet<Integer>();
-            for (int i = 0; i < n; i++) {
-                int p = in.ni() + 1000;
-                a[p]++;
-                s.add(2 * p);
-            }
-            long count = 0;
-            for (int i = 0; i <= 2000; i++) {
-                for (int j = i + 1; j <= 2000; j++) {
-                    if (a[i] != 0 && a[j] != 0) {
-                        if (s.contains(i + j)) {
-                            count += a[i] * a[j];
-                        }
-                    }
+            long n = in.nl();
+            int w = in.ni();
+            long ans = Expo.a_pow_n_mod_m(10, n - 2, 1000000007);
+            if (w == 0) {
+                System.out.println((ans * 9) % 1000000007);
+            } else if (w > 0) {
+                int i = 1;
+                long temp = ans;
+                ans = 0;
+                while (i + w <= 9) {
+                    ans += temp;
+                    ans %= 1000000007;
+                    i++;
                 }
-            }
-            for (int i = 0; i <= 2000; i++) {
-                if (a[i] != 0) {
-                    if (s.contains(2 * i)) {
-                        count += a[i] * (a[i] - 1) / 2;
-                    }
+                System.out.println((ans) % 1000000007);
+            } else {
+                int i = 0;
+                long temp = ans;
+                ans = 0;
+                while (i - w <= 9) {
+                    ans += temp;
+                    ans %= 1000000007;
+                    i++;
                 }
+                System.out.println((ans) % 1000000007);
             }
-            System.out.println(count);
         }
     }
 
@@ -147,6 +145,39 @@ public class AVGPR {
         private void validate(int n, int start, int end) {
             if (start < 0 || end >= n) {
                 throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private static class Expo {
+
+        static long a_pow_n_mod_m(long a, long n, long m) {
+            if (n == 0) {
+                return 1;
+            }
+            if (n == 1) {
+                return a;
+            }
+            long p = a_pow_n_mod_m(a, n / 2, m);
+            if (n % 2 == 0) {
+                return (p * p) % m;
+            } else {
+                return ((p * p) % m * a) % m;
+            }
+        }
+
+        static long a_pow_n(long a, long n) {
+            if (n == 0) {
+                return 1;
+            }
+            if (n == 1) {
+                return a;
+            }
+            long p = a_pow_n(a, n / 2);
+            if (n % 2 == 0) {
+                return (p * p);
+            } else {
+                return ((p * p) * a);
             }
         }
     }
