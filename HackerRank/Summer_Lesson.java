@@ -2,7 +2,7 @@
 /**
  * Date: 24 Feb, 2018
  * Link : https://www.hackerrank.com/contests/university-codesprint-4/challenges/summer-lesson
- * 
+ *
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
  */
@@ -14,7 +14,7 @@ public class Summer_Lesson {
     static int[] howManyStudents(int m, int[] c) {
         // Return an array denoting the number of students taking each class.
         int s[] = new int[m];
-        for(int i=0;i<c.length;i++){
+        for (int i = 0; i < c.length; i++) {
             s[c[i]]++;
         }
         return s;
