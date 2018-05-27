@@ -2,7 +2,7 @@
 /**
  * Date: 12 Apr, 2018
  * Link: http://codeforces.com/contest/961/problem/A
- * 
+ *
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
  */
@@ -18,26 +18,26 @@ public class Tetris_961_A {
         int n = in.ni();
         int m = in.ni();
         int a[] = new int[n];
-        int count =0;
-        for(int i=0;i<m;i++){
-            a[in.ni()-1]++;
+        int count = 0;
+        for (int i = 0; i < m; i++) {
+            a[in.ni() - 1]++;
             count += checka(a);
         }
         System.out.println(count);
     }
-    
-    public static int checka(int a[]){
+
+    public static int checka(int a[]) {
         int count = 100000;
-        for(int i=0;i<a.length;i++){
-            if(a[i]==0){
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 0) {
                 return 0;
             }
-            if(a[i]<count){
+            if (a[i] < count) {
                 count = a[i];
             }
         }
-        for(int i=0;i<a.length;i++){
-            a[i]-=count;
+        for (int i = 0; i < a.length; i++) {
+            a[i] -= count;
         }
         return count;
     }
@@ -74,7 +74,7 @@ public class Tetris_961_A {
             try {
                 return br.readLine();
             } catch (IOException ex) {
-                
+
             }
             return null;
         }

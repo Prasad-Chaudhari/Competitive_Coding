@@ -23,35 +23,30 @@ public class Minimize_the_error_960_B {
         int k2 = in.ni();
         int a[] = in.gia(n);
         int b[] = in.gia(n);
-        for(int i=0;i<n;i++){
-            pq.add(new Data(a[i],b[i]));
+        for (int i = 0; i < n; i++) {
+            pq.add(new Data(a[i], b[i]));
         }
-        while(k1>0||k2>0){
-            Data d= pq.poll();
-            if(k1>0&&k2>0){
-                if(d.a>d.b){
+        while (k1 > 0 || k2 > 0) {
+            Data d = pq.poll();
+            if (k1 > 0 && k2 > 0) {
+                if (d.a > d.b) {
                     d.a--;
                     k1--;
-                }
-                else{
+                } else {
                     d.b--;
                     k2--;
                 }
-            }
-            else if(k1>0){
-                if(d.a>d.b){
+            } else if (k1 > 0) {
+                if (d.a > d.b) {
                     d.a--;
-                }
-                else{
+                } else {
                     d.a++;
                 }
                 k1--;
-            }
-            else if(k2>0){
-                if(d.b>d.a){
+            } else if (k2 > 0) {
+                if (d.b > d.a) {
                     d.b--;
-                }
-                else{
+                } else {
                     d.b++;
                 }
                 k2--;
@@ -59,9 +54,9 @@ public class Minimize_the_error_960_B {
             pq.add(d);
         }
         long ans = 0;
-        for(int i=0;i<n;i++){
+        for (int i = 0; i < n; i++) {
             Data d = pq.poll();
-            ans+=(long)(d.a-d.b)*(d.a-d.b);
+            ans += (long) (d.a - d.b) * (d.a - d.b);
         }
         System.out.println(ans);
     }
@@ -182,17 +177,16 @@ class Data {
 
 class Com implements Comparator<Data> {
 
-    private long f(Data a){
-        return -((long)(a.a-a.b))*(a.a-a.b);
+    private long f(Data a) {
+        return -((long) (a.a - a.b)) * (a.a - a.b);
     }
+
     public int compare(Data a, Data b) {
-        if(f(a)-f(b)>0){
+        if (f(a) - f(b) > 0) {
             return 1;
-        }
-        else if(f(a)-f(b)<0){
+        } else if (f(a) - f(b) < 0) {
             return -1;
-        }
-        else{
+        } else {
             return 0;
         }
     }

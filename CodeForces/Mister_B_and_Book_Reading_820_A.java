@@ -2,7 +2,7 @@
 /**
  * Date: 25 Feb, 2018
  * Link : http://codeforces.com/contest/820/problem/A
- * 
+ *
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
  */

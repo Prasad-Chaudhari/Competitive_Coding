@@ -4,7 +4,7 @@
  * Link: http://codeforces.com/contest/960/problem/D
  * Comment : Never underestimate System.out.print, it can shoot up time limits,
  *           Never overestimate StringBuilder, it can shoot up memory limits.
- * 
+ *
  * @author Prasad-Chaudhari
  * @email prasadc8897@gmail.com
  */
