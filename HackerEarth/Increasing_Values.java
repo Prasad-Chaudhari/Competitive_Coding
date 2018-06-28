@@ -16,7 +16,7 @@ import java.util.Stack;
 import java.util.Arrays;
 
 public class Increasing_Values {
-    
+
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         FastIO in = new FastIO();
@@ -41,7 +41,7 @@ public class Increasing_Values {
             adja[from[i]][--count[from[i]]] = to[i];
             adja[to[i]][--count[to[i]]] = from[i];
         }
-        
+
         Stack<Integer> st = new Stack<>();
         Stack<Integer> st2 = new Stack<>();
         int parent[] = new int[n + 1];
@@ -71,14 +71,14 @@ public class Increasing_Values {
                 j++;
             }
         }
-        
+
         long d[] = new long[n + 1];
         for (int i = 1; i <= n; i++) {
             d[i] = in.ni();
         }
-        
+
         Chain[] chainRep = new Chain[n + 1];
-        
+
         int subtree[] = new int[n + 1];
         boolean good[] = new boolean[n + 1];
         while (!st2.isEmpty()) {
@@ -118,7 +118,7 @@ public class Increasing_Values {
                 ccount++;
             }
         }
-        
+
         for (int i = 1; i <= n; i++) {
             if (chainRep[i].bitree == null) {
                 int l = chainRep[i].size;
@@ -174,46 +174,46 @@ public class Increasing_Values {
             in.println(ccount + "");
         }
     }
-    
+
     static class FastIO {
-        
+
         private final BufferedReader br;
         private final BufferedWriter bw;
         private String s[];
         private int index;
-        
+
         public FastIO() throws IOException {
             br = new BufferedReader(new InputStreamReader(System.in));
             bw = new BufferedWriter(new OutputStreamWriter(System.out, "UTF-8"));
             s = br.readLine().split(" ");
             index = 0;
         }
-        
+
         public int ni() throws IOException {
             return Integer.parseInt(nextToken());
         }
-        
+
         public double nd() throws IOException {
             return Double.parseDouble(nextToken());
         }
-        
+
         public long nl() throws IOException {
             return Long.parseLong(nextToken());
         }
-        
+
         public String next() throws IOException {
             return nextToken();
         }
-        
+
         public String nli() throws IOException {
             try {
                 return br.readLine();
             } catch (IOException ex) {
-                
+
             }
             return null;
         }
-        
+
         public int[] gia(int n) throws IOException {
             int a[] = new int[n];
             for (int i = 0; i < n; i++) {
@@ -221,7 +221,7 @@ public class Increasing_Values {
             }
             return a;
         }
-        
+
         public int[] gia(int n, int start, int end) throws IOException {
             validate(n, start, end);
             int a[] = new int[n];
@@ -230,7 +230,7 @@ public class Increasing_Values {
             }
             return a;
         }
-        
+
         public double[] gda(int n) throws IOException {
             double a[] = new double[n];
             for (int i = 0; i < n; i++) {
@@ -238,7 +238,7 @@ public class Increasing_Values {
             }
             return a;
         }
-        
+
         public double[] gda(int n, int start, int end) throws IOException {
             validate(n, start, end);
             double a[] = new double[n];
@@ -247,7 +247,7 @@ public class Increasing_Values {
             }
             return a;
         }
-        
+
         public long[] gla(int n) throws IOException {
             long a[] = new long[n];
             for (int i = 0; i < n; i++) {
@@ -255,7 +255,7 @@ public class Increasing_Values {
             }
             return a;
         }
-        
+
         public long[] gla(int n, int start, int end) throws IOException {
             validate(n, start, end);
             long a[] = new long[n];
@@ -264,7 +264,7 @@ public class Increasing_Values {
             }
             return a;
         }
-        
+
         public int[][] gg(int n, int m) throws IOException {
             int adja[][] = new int[n + 1][];
             int from[] = new int[m];
@@ -285,18 +285,18 @@ public class Increasing_Values {
             }
             return adja;
         }
-        
+
         public void print(String s) throws IOException {
             bw.write(s);
             bw.flush();
         }
-        
+
         public void println(String s) throws IOException {
             bw.write(s);
             bw.newLine();
             bw.flush();
         }
-        
+
         private String nextToken() throws IndexOutOfBoundsException, IOException {
             if (index == s.length) {
                 s = br.readLine().split(" ");
@@ -304,7 +304,7 @@ public class Increasing_Values {
             }
             return s[index++];
         }
-        
+
         private void validate(int n, int start, int end) {
             if (start < 0 || end >= n) {
                 throw new IllegalArgumentException();
@@ -314,11 +314,11 @@ public class Increasing_Values {
 }
 
 class Chain {
-    
+
     int head, size;
     LinkedList<Integer> members;
     BIT bitree;
-    
+
     public Chain(int i) {
         size = 1;
         head = i;
@@ -326,7 +326,7 @@ class Chain {
         members.add(i);
         bitree = null;
     }
-    
+
     public void addMember(int i) {
         members.add(i);
         size++;
@@ -334,13 +334,13 @@ class Chain {
 }
 
 class BIT {
-    
+
     long BITree[];
-    
+
     public BIT(int n) {
         BITree = new long[n + 1];
     }
-    
+
     public void update(int index, int n, long value) {
         index++;
         while (index <= n) {
@@ -348,7 +348,7 @@ class BIT {
             index += index & -index;
         }
     }
-    
+
     public long getSum(int i) {
         i++;
         long sum = 0;
