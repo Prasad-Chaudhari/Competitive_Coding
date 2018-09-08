@@ -1,5 +1,3 @@
-package CodeForces.Contest_1008;
-
 
 /**
  * Date: 13 Jul, 2018

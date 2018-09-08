@@ -1,5 +1,3 @@
-package HackerRank;
-
 
 /**
  * Date: 20 Jun, 2018

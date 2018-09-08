@@ -1,9 +1,7 @@
-package CodeForces.Contest_1008;
-
 
 /**
  * Date: 13 Jul, 2018
- * Link:
+ * Link: http://codeforces.com/contest/1008/problem/B
  *
  * @author Prasad-Chaudhari
  * @linkedIn: https://www.linkedin.com/in/prasad-chaudhari-841655a6/

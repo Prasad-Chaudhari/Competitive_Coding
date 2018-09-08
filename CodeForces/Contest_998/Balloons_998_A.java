@@ -1,5 +1,3 @@
-package CodeChef.Contest_998;
-
 
 /**
  * Date: 1 Jul, 2018

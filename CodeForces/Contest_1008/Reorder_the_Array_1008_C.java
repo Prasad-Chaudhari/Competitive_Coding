@@ -1,5 +1,3 @@
-package CodeForces.Contest_1008;
-
 
 /**
  * Date: 13 Jul, 2018
@@ -197,24 +195,24 @@ public class Reorder_the_Array_1008_C {
             }
         }
     }
-}
 
-class Data implements Comparable<Data> {
+    static class Data implements Comparable<Data> {
 
-    int a, b;
+        int a, b;
 
-    public Data(int a, int b) {
-        this.a = a;
-        this.b = b;
-    }
-
-    @Override
-    public int compareTo(Data d) {
-        if (Integer.compare(a, d.a) == 0) {
-            return Integer.compare(b, d.b);
-        } else {
-            return Integer.compare(a, d.a);
+        public Data(int a, int b) {
+            this.a = a;
+            this.b = b;
         }
-    }
 
+        @Override
+        public int compareTo(Data d) {
+            if (Integer.compare(a, d.a) == 0) {
+                return Integer.compare(b, d.b);
+            } else {
+                return Integer.compare(a, d.a);
+            }
+        }
+
+    }
 }
