@@ -10,7 +10,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -32,28 +31,6 @@ public class CUTPLANT {
                 }
             }
             int ans = 0;
-//            LinkedList<Integer> l = new LinkedList<>();
-//            l.add(b[0]);
-//            for(int i=1;i<n;i++){
-//                int first = l.getFirst();
-//                int last = l.getLast();
-//                if(a[i]<first){
-//                    while (!l.isEmpty()&&a[i]<l.getFirst()) {
-//                        l.removeFirst();
-//                        ans++;
-//                    }
-//                }
-//                if(b[i]>last){
-//                    while (!l.isEmpty()&&b[i]>l.getLast()) {
-//                        l.removeLast();
-//                        ans++;
-//                    }
-//                }
-//            }
-//            while (!l.isEmpty()) {
-//                ans++;
-//                l.remove();
-//            }
             MaxSegmentTree maxst = new MaxSegmentTree();
             maxst.getArray(b);
             maxst.build(0, n - 1, 1);
